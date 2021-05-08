@@ -3,4 +3,5 @@
     <string name="retry">Retry</string>
     <string name="tax_classification">Tax classification: </string>
     <string name="minimum_initial_application_amount">Minimum initial application amount</string>
+    <string name="fees">+ Fees</string>
 </resources>

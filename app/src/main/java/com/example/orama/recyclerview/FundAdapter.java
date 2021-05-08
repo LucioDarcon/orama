@@ -17,7 +17,8 @@ import java.util.List;
 
 public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Fund> mFundList = new ArrayList<>();;
+    private List<Fund> mFundList = new ArrayList<>();
+    private FundAdapterContract.View mView;
     private FundViewHolder mFundViewHolder;
 
     @NonNull
@@ -29,12 +30,7 @@ public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 parent,
                 false);
 
-        return new FundViewHolder(fundRecyclerItemBinding);
-    }
-
-    public void filterByList(ArrayList<Fund> newFundList) {
-        mFundList = newFundList;
-        notifyDataSetChanged();
+        return new FundViewHolder(fundRecyclerItemBinding, mView);
     }
 
     @Override
@@ -45,8 +41,9 @@ public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         mFundViewHolder.mFundRecyclerItemBinding.executePendingBindings();
     }
 
-    public void submitList(List<Fund> fundList) {
+    public void submitList(List<Fund> fundList, FundAdapterContract.View view) {
         mFundList = fundList;
+        mView = view;
         notifyDataSetChanged();
     }
 

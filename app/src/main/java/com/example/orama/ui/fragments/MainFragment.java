@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ import com.example.infrastructure.response.Fund;
 import com.example.orama.R;
 import com.example.orama.databinding.MainFragmentBinding;
 import com.example.orama.recyclerview.FundAdapter;
+import com.example.orama.recyclerview.FundAdapterContract;
 import com.example.orama.ui.contracts.MainFragmentContract;
 import com.example.orama.ui.presenter.MainFragmentPresenter;
 
@@ -25,7 +27,7 @@ import java.util.List;
 
 import static com.example.core.provider.ProvideRemoteDataSource.provideFundRemoteDataSource;
 
-public class MainFragment extends Fragment implements MainFragmentContract.View, View.OnClickListener {
+public class MainFragment extends Fragment implements MainFragmentContract.View, View.OnClickListener, FundAdapterContract.View {
 
     FundAdapter mFundAdapter;
     MainFragmentBinding mMainFragmentBinding;
@@ -39,7 +41,6 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
         return fragment;
     }
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mMainFragmentBinding = DataBindingUtil.inflate(
@@ -48,18 +49,19 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
                 null,
                 false
         );
+        setListeners();
+        initAdapter();
+        initPresenter();
+        filterList();
+        return mMainFragmentBinding.getRoot();
+    }
 
+    public void initPresenter() {
         mMainFragmentPresenter = new MainFragmentPresenter(
                 this,
                 provideFundRemoteDataSource()
         );
-
-        setListeners();
-        initAdapter();
         mMainFragmentPresenter.getFund();
-        filterList();
-
-        return mMainFragmentBinding.getRoot();
     }
 
     private void initAdapter() {
@@ -77,7 +79,7 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
     public void showFundList(List<Fund> fundList) {
         hideLoadingComponents();
         mCurrentFundList = fundList;
-        mFundAdapter.submitList(fundList);
+        mFundAdapter.submitList(fundList, this);
     }
 
     public void filterList() {
@@ -105,7 +107,7 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
                 newFundList.add(filterFund);
             }
         }
-        mFundAdapter.filterByList(newFundList);
+        mFundAdapter.submitList(newFundList, this);
     }
 
     @Override
@@ -145,4 +147,13 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
                 break;
         }
     }
+
+    @Override
+    public void onClickFund(Fund fund) {
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container,
+                        FundDetailFragment.newInstance(fund)
+                ).commitNow();
+    }
+
 }
