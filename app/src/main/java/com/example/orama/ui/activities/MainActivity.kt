@@ -1,8 +1,10 @@
-package com.example.orama.ui
+package com.example.orama.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.orama.R
+import com.example.orama.ui.fragments.MainFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,10 +14,11 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container,
+                    MainFragment.newInstance()
+                )
                 .commitNow()
         }
     }
-
 
 }

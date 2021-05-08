@@ -32,6 +32,11 @@ public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return new FundViewHolder(fundRecyclerItemBinding);
     }
 
+    public void filterByList(ArrayList<Fund> newFundList) {
+        mFundList = newFundList;
+        notifyDataSetChanged();
+    }
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         mFundViewHolder = (FundViewHolder) holder;

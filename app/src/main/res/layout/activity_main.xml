@@ -12,18 +12,18 @@
             android:id="@+id/activity_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/design_default_color_secondary"
+            android:background="@color/teal_700"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="Orama"
+            app:title="Fund list"
             app:titleTextColor="@color/white" />
 
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
