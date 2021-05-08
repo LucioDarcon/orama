@@ -1,7 +1,5 @@
 package com.example.orama.recyclerview;
 
-import android.telephony.mbms.MbmsErrors;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,16 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.infrastructure.response.Fund;
 import com.example.orama.R;
 import com.example.orama.databinding.FundRecyclerItemBinding;
 import com.example.orama.holder.FundViewHolder;
-import com.example.orama.model.Fund;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Fund> mFundList;
+    private List<Fund> mFundList = new ArrayList<>();;
     private FundViewHolder mFundViewHolder;
 
     @NonNull
@@ -35,8 +34,8 @@ public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        mFundViewHolder =  (FundViewHolder) holder;
-        Fund fund = mFundList.get(position);
+        mFundViewHolder = (FundViewHolder) holder;
+        Fund fund       = mFundList.get(position);
         mFundViewHolder.mFundRecyclerItemBinding.setFund(fund);
         mFundViewHolder.mFundRecyclerItemBinding.executePendingBindings();
     }

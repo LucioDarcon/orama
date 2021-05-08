@@ -1,4 +1,4 @@
-package com.example.orama.utils;
+package com.example.infrastructure;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

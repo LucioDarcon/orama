@@ -1,7 +1,7 @@
 package com.example.core.provider;
-import com.example.core.BuildConfig;
-import com.example.core.service.FundApiDataSource;
 
+import com.example.core.BuildConfig;
+import com.example.infrastructure.apidatasource.FundApiDataSource;
 
 public class ProvideApiDataSource {
 

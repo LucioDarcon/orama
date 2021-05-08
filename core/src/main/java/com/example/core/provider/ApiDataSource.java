@@ -1,6 +1,6 @@
 package com.example.core.provider;
 
-import com.example.core.service.FundApiDataSource;
+import com.example.infrastructure.apidatasource.FundApiDataSource;
 import com.google.gson.Gson;
 
 import okhttp3.OkHttpClient;

@@ -1,51 +1,41 @@
-package com.example.orama.model.spec;
+package com.example.infrastructure.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Specification {
+public class SpecificationResponse {
 
     @SerializedName("fund_main_strategy_name")
-    @Expose
     private String fundMainStrategyName;
 
     @SerializedName("fund_suitability_profile")
-    @Expose
     private FundSuitabilityProfile fundSuitabilityProfile;
 
     @SerializedName("fund_risk_profile")
-    @Expose
     private FundRiskProfile fundRiskProfile;
 
     @SerializedName("fund_main_strategy_explanation")
-    @Expose
     private String fundMainStrategyExplanation;
 
     @SerializedName("fund_type")
-    @Expose
     private String fundType;
 
     @SerializedName("fund_class")
-    @Expose
     private String fundClass;
 
     @SerializedName("fund_macro_strategy")
-    @Expose
     private FundMacroStrategy fundMacroStrategy;
 
     @SerializedName("fund_class_anbima")
-    @Expose
     private String fundClassAnbima;
 
     @SerializedName("fund_main_strategy")
-    @Expose
     private FundMainStrategy fundMainStrategy;
 
     @SerializedName("is_qualified")
-    @Expose
     private String isQualified;
 
-    public Specification(
+    public SpecificationResponse(
             String fundMainStrategyName,
             FundSuitabilityProfile fundSuitabilityProfile,
             String fundClass,

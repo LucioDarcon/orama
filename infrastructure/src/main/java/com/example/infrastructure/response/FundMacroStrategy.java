@@ -1,4 +1,4 @@
-package com.example.orama.model.spec;
+package com.example.infrastructure.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -6,15 +6,12 @@ import com.google.gson.annotations.SerializedName;
 public class FundMacroStrategy {
 
     @SerializedName("id")
-    @Expose
     private Integer id;
 
     @SerializedName("explanation")
-    @Expose
     private String explanation;
 
     @SerializedName("name")
-    @Expose
     private String name;
 
     public Integer getId() {

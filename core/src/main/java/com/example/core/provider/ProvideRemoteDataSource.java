@@ -1,8 +1,8 @@
 package com.example.core.provider;
 
-import com.example.core.service.FundApiDataSource;
-import com.example.core.service.FundRemoteDataSource;
-import com.example.core.service.FundRemoteDataSourceImpl;
+import com.example.infrastructure.apidatasource.FundApiDataSource;
+import com.example.infrastructure.datasourceimp.FundRemoteDataSourceImpl;
+import com.example.infrastructure.remotedatasource.FundRemoteDataSource;
 
 import static com.example.core.provider.ProvideApiDataSource.provideFundApiDataSource;
 

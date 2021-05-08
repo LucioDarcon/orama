@@ -1,12 +1,16 @@
-package com.example.core.service;
+package com.example.infrastructure.datasourceimp;
 
-import com.example.orama.model.Fund;
+import com.example.infrastructure.apidatasource.FundApiDataSource;
+import com.example.infrastructure.remotedatasource.FundRemoteDataSource;
+import com.example.infrastructure.callback.GetFundListCallBack;
+import com.example.infrastructure.response.Fund;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 public class FundRemoteDataSourceImpl implements FundRemoteDataSource {
 

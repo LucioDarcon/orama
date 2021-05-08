@@ -1,23 +1,17 @@
-package com.example.orama.model.spec;
+package com.example.infrastructure.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class FundSuitabilityProfile {
+public class FundRiskProfile {
 
     @SerializedName("score_range_order")
-    @Expose
-    private Integer scoreRangeOrder;
+    private String scoreRangeOrder;
 
     @SerializedName("name")
-    @Expose
     private String name;
 
-    public FundSuitabilityProfile(String name) {
-        this.name = name;
-    }
-
-    public Integer getScoreRangeOrder() {
+    public String getScoreRangeOrder() {
         return scoreRangeOrder;
     }
 

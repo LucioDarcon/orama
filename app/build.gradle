@@ -15,7 +15,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -58,6 +58,8 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':core')
+    implementation project(path: ':infrastructure')
     implementation 'androidx.lifecycle:lifecycle-livedata:2.3.1'
     def nav_version = "2.3.4"
     def lifecycle_version = "2.3.0"
@@ -76,6 +78,7 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 

@@ -1,6 +1,6 @@
-package com.example.core.service;
+package com.example.infrastructure.apidatasource;
 
-import com.example.orama.model.Fund;
+import com.example.infrastructure.response.Fund;
 
 import java.util.List;
 

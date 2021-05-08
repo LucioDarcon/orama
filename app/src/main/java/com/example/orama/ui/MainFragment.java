@@ -11,16 +11,17 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.core.service.FundApiDataSource;
 import com.example.orama.R;
 import com.example.orama.databinding.MainFragmentBinding;
 import com.example.orama.recyclerview.FundAdapter;
 
-public class MainFragment extends Fragment {
+import static com.example.core.provider.ProvideRemoteDataSource.provideFundRemoteDataSource;
 
-    FundAdapter fundAdapter;
-    MainFragmentBinding mainFragmentBinding;
-    private FundApiDataSource fundApiDataSource;
+public class MainFragment extends Fragment implements MainFragmentContract.View {
+
+    FundAdapter mFundAdapter;
+    MainFragmentBinding mMainFragmentBinding;
+    MainFragmentPresenter mMainFragmentPresenter;
 
     public static MainFragment newInstance() {
         Bundle args           = new Bundle();
@@ -32,28 +33,31 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mainFragmentBinding = DataBindingUtil.inflate(
+        mMainFragmentBinding = DataBindingUtil.inflate(
                 LayoutInflater.from(getContext()),
                 R.layout.main_fragment,
                 null,
                 false
         );
 
+        mMainFragmentPresenter = new MainFragmentPresenter(
+                this,
+                provideFundRemoteDataSource()
+        );
         initAdapter();
-        getFunds();
-
-        return mainFragmentBinding.getRoot();
+        mMainFragmentPresenter.getFund();
+        return mMainFragmentBinding.getRoot();
     }
 
     private void initAdapter() {
-        fundAdapter = new FundAdapter();
-        mainFragmentBinding.mainFragmentRecyclerViewFund.setAdapter(fundAdapter);
-        mainFragmentBinding.mainFragmentRecyclerViewFund.setLayoutManager(new LinearLayoutManager(getContext()));
+        mFundAdapter = new FundAdapter();
+        mMainFragmentBinding.mainFragmentRecyclerViewFund.setAdapter(mFundAdapter);
+        mMainFragmentBinding.mainFragmentRecyclerViewFund.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void getFunds() {
-
+    @Override
+    public void setPresenter(MainFragmentPresenter mainFragmentPresenter) {
+        this.mMainFragmentPresenter = mainFragmentPresenter;
     }
-
 
 }

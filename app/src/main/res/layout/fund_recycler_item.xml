@@ -7,7 +7,7 @@
     <data>
         <variable
             name="fund"
-            type="com.example.orama.model.Fund" />
+            type="com.example.infrastructure.response.Fund" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
