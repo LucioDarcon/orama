@@ -1,7 +1,6 @@
 package com.example.infrastructure.response;
 
 import com.example.infrastructure.MathUtils;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class Fund {
     protected ArrayList<Document> documentRespons;
 
     @SerializedName("specification")
-    protected SpecificationResponse specificationResponse;
+    protected Specification specification;
 
     @SerializedName("quota_date")
     protected Date quotaDate;
@@ -66,7 +65,7 @@ public class Fund {
             Boolean isSimple,
             Operability operability,
             String simpleName,
-            SpecificationResponse specificationResponse,
+            Specification specification,
             Description description,
             String volatility12m,
             Profitabilities profitabilities,
@@ -75,7 +74,7 @@ public class Fund {
         this.isSimple = isSimple;
         this.operability = operability;
         this.simpleName = simpleName;
-        this.specificationResponse = specificationResponse;
+        this.specification = specification;
         this.description = description;
         this.volatility12m = volatility12m;
         this.profitabilities = profitabilities;
@@ -114,8 +113,8 @@ public class Fund {
         return documentRespons;
     }
 
-    public SpecificationResponse getSpecificationResponse() {
-        return specificationResponse;
+    public Specification getSpecification() {
+        return specification;
     }
 
     public Date getQuotaDate() {

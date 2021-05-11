@@ -10,74 +10,357 @@
             type="com.example.infrastructure.response.Fund" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fund_detail_fragment_title"
-            style="@style/TextAppearance.AppCompat.Medium"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@{fund.simpleName}"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Oaktree Global Credit FIC FIM IE" />
+            android:layout_height="wrap_content">
 
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/fund_detail_fragment_fees_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/fees"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_title" />
-
-        <net.cachapa.expandablelayout.ExpandableLayout
-            android:id="@+id/fund_detail_fragment_fees_expandable_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:el_duration="300"
-            app:el_expanded="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fees_text_view">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fund_detail_fragment_title"
+                style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@{fund.simpleName}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Oaktree Global Credit FIC FIM IE" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/fund_detail_fragment_maximum_administration_free"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fund_detail_fragment_fund_manager_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/fund_manager"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_title" />
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/fund_detail_fragment_fund_manage_expandable_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_duration="300"
+                app:el_expanded="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fund_manager_text_view">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/fund_detail_fragment_fund_manager_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fund_manager_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{fund.fundManager.name}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fund_manager_photo" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fund_manager_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:gravity="start"
+                        android:text="@{fund.fundManager.description}"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fund_manager_name" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fund_detail_fragment_fees_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/fees"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fund_manage_expandable_layout" />
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/fund_detail_fragment_fees_expandable_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_duration="300"
+                app:el_expanded="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fees_text_view">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_maximum_administration_free_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/maximum_administration_fee"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_maximum_administration_free"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{fund.fees.maximumAdministrationFee}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/fund_detail_fragment_maximum_administration_free_label"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fees_anticipated_retrieval_free_value_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/anticipated_retrieval_fee_value"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_maximum_administration_free" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fees_anticipated_retrieval_free_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{fund.fees.anticipatedRetrievalFeeValue}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/fund_detail_fragment_fees_anticipated_retrieval_free_value_label"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_maximum_administration_free" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_administration_fee_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/administration_fee"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fees_anticipated_retrieval_free_value" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_administration_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{fund.fees.administrationFee}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/fund_detail_fragment_administration_fee_label"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fees_anticipated_retrieval_free_value" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_anticipated_retrieval_fee_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/anticipated_retrieval_fee"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_administration_fee" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_anticipated_retrieval_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{fund.fees.anticipatedRetrievalFee}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/fund_detail_fragment_anticipated_retrieval_fee_label"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_administration_fee" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_performance_fee_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/performance_fee"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_anticipated_retrieval_fee" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_performance_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:text="@{fund.fees.performanceFee}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/fund_detail_fragment_performance_fee_label"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_anticipated_retrieval_fee" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/fund_detail_fragment_specification_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/specification"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fees_expandable_layout" />
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/fund_detail_fragment_specification_expandable_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_duration="300"
+                app:el_expanded="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_specification_text_view">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@{fund.fees.maximumAdministrationFee}"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginTop="16dp">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@{fund.fees.anticipatedRetrievalFeeValue}"
-                    android:textColor="@color/black"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_maximum_administration_free" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_strategy_name_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/fund_main_strategy_name"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_strategy_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{fund.specification.fundMainStrategyName}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/fund_detail_fragment_strategy_name_label"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        </net.cachapa.expandablelayout.ExpandableLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fund_type_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/fund_type"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_strategy_name_label" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fund_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:text="@{fund.specification.fundType}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/fund_detail_fragment_fund_type_label"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_strategy_name_label" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fund_class_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/fund_class"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fund_type" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fund_class"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:text="@{fund.specification.fundClass}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toEndOf="@+id/fund_detail_fragment_fund_class_label"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fund_type" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fund_class_anbima_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@string/fund_class_anbima"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fund_class" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/fund_detail_fragment_fund_class_anbima"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:text="@{fund.specification.fundClassAnbima}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fund_detail_fragment_fund_class_anbima_label" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </layout>

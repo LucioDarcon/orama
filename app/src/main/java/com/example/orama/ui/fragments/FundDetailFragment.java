@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.example.infrastructure.response.Fund;
 import com.example.orama.R;
 import com.example.orama.databinding.FundDetailFragmentBinding;
@@ -38,17 +39,18 @@ public class FundDetailFragment extends Fragment {
                 false
         );
 
-        mFundDetailFragmentBinding.fundDetailFragmentFeesTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mFundDetailFragmentBinding.fundDetailFragmentFeesExpandableLayout.expand(true);
-            }
-        });
-
+        configureExpandableLayouts();
         mFundDetailFragmentBinding.setFund(mFund);
         mFundDetailFragmentBinding.executePendingBindings();
 
         return mFundDetailFragmentBinding.getRoot();
+    }
+
+    public void configureExpandableLayouts() {
+        mFundDetailFragmentBinding.fundDetailFragmentFeesTextView.setOnClickListener(v -> mFundDetailFragmentBinding.fundDetailFragmentFeesExpandableLayout.setExpanded(!mFundDetailFragmentBinding.fundDetailFragmentFeesExpandableLayout.isExpanded()));
+        mFundDetailFragmentBinding.fundDetailFragmentSpecificationTextView.setOnClickListener(v -> mFundDetailFragmentBinding.fundDetailFragmentSpecificationExpandableLayout.setExpanded(!mFundDetailFragmentBinding.fundDetailFragmentSpecificationExpandableLayout.isExpanded()));
+        mFundDetailFragmentBinding.fundDetailFragmentFundManagerTextView.setOnClickListener(v -> mFundDetailFragmentBinding.fundDetailFragmentFundManageExpandableLayout.setExpanded(!mFundDetailFragmentBinding.fundDetailFragmentFundManageExpandableLayout.isExpanded()));
+        Glide.with(this).load("https://s3.amazonaws.com/orama-media/" + mFund.getFundManager().getLogo()).into(mFundDetailFragmentBinding.fundDetailFragmentFundManagerPhoto);
     }
 
 

@@ -3,7 +3,7 @@ package com.example.infrastructure.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SpecificationResponse {
+public class Specification {
 
     @SerializedName("fund_main_strategy_name")
     private String fundMainStrategyName;
@@ -35,7 +35,7 @@ public class SpecificationResponse {
     @SerializedName("is_qualified")
     private String isQualified;
 
-    public SpecificationResponse(
+    public Specification(
             String fundMainStrategyName,
             FundSuitabilityProfile fundSuitabilityProfile,
             String fundClass,
