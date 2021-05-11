@@ -12,9 +12,9 @@
     <string name="administration_fee">Administration fee:</string>
     <string name="anticipated_retrieval_fee">Anticipated retrieval fee:</string>
     <string name="performance_fee">Performance fee:</string>
-    <string name="fund_main_strategy_name">Fund main strategy name:</string>
-    <string name="fund_main_strategy_explanation">Fund main strategy explanation:</string>
-    <string name="fund_type">Fund type:</string>
-    <string name="fund_class">Fund class:</string>
-    <string name="fund_class_anbima">Fund class anbima:</string>
+    <string name="fund_main_strategy_name">Fund main strategy name</string>
+    <string name="fund_main_strategy_explanation">Fund main strategy explanation</string>
+    <string name="fund_type">Fund type</string>
+    <string name="fund_class">Fund class</string>
+    <string name="fund_class_anbima">Fund class anbima</string>
 </resources>
