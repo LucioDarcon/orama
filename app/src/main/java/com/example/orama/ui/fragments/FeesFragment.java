@@ -16,6 +16,8 @@ import com.example.infrastructure.response.Fund;
 import com.example.orama.R;
 import com.example.orama.databinding.FeesFragmentBinding;
 
+import static com.example.orama.uitl.ExpandableUtil.configExpandableLayout;
+
 public class FeesFragment extends Fragment {
 
     FeesFragmentBinding mFeesFragmentBinding;
@@ -43,6 +45,11 @@ public class FeesFragment extends Fragment {
 
         mFeesFragmentBinding.setFund(mFund);
         configureExpandableLayout();
+
+        configExpandableLayout(getActivity(),
+                               mFeesFragmentBinding.fundDetailFragmentFeesExpandableButton,
+                               mFeesFragmentBinding.fundDetailFragmentFeesExpandableLayout);
+
         return mFeesFragmentBinding.getRoot();
     }
 

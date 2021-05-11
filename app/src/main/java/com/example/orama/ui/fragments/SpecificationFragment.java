@@ -16,6 +16,8 @@ import com.example.infrastructure.response.Fund;
 import com.example.orama.R;
 import com.example.orama.databinding.SpecificationFragmentBinding;
 
+import static com.example.orama.uitl.ExpandableUtil.configExpandableLayout;
+
 public class SpecificationFragment extends Fragment {
 
     SpecificationFragmentBinding mSpecificationFragment;
@@ -43,24 +45,12 @@ public class SpecificationFragment extends Fragment {
         );
 
         mSpecificationFragment.setFund(mFund);
-        configureExpandableLayout();
+
+        configExpandableLayout(getActivity(),
+                               mSpecificationFragment.fundDetailFragmentSpecificationExpandableButton,
+                               mSpecificationFragment.fundDetailFragmentSpecificationExpandableLayout);
+
         return mSpecificationFragment.getRoot();
-    }
-
-    private void configureExpandableLayout() {
-        Drawable expandLessDrawable = ContextCompat.getDrawable(getActivity(), R.drawable.ic_baseline_expand_less_24);
-        Drawable expandMoreDrawable = ContextCompat.getDrawable(getActivity(), R.drawable.ic_baseline_expand_more_24);
-        mSpecificationFragment.fundDetailFragmentSpecificationExpandableButton.setOnClickListener(v -> {
-            boolean specificationExpandableLayoutIsExpanded = mSpecificationFragment.fundDetailFragmentSpecificationExpandableLayout.isExpanded();
-            mSpecificationFragment.fundDetailFragmentSpecificationExpandableLayout.setExpanded(!specificationExpandableLayoutIsExpanded);
-
-            if (specificationExpandableLayoutIsExpanded) {
-                mSpecificationFragment.fundDetailFragmentSpecificationExpandableButton.setImageDrawable(expandMoreDrawable);
-            } else {
-                mSpecificationFragment.fundDetailFragmentSpecificationExpandableButton.setImageDrawable(expandLessDrawable);
-            }
-
-        });
     }
 
 }
