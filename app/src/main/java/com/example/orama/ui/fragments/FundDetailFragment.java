@@ -9,16 +9,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.example.core.BuildConfig;
+import com.example.infrastructure.response.Document;
 import com.example.infrastructure.response.Fund;
 import com.example.orama.R;
 import com.example.orama.databinding.FundDetailFragmentBinding;
-public class FundDetailFragment extends Fragment {
+import com.example.orama.recyclerview.DocumentAdapter;
+import com.example.orama.recyclerview.DocumentAdapterContract;
+import com.example.orama.recyclerview.FundAdapter;
+
+public class FundDetailFragment extends Fragment implements DocumentAdapterContract.View {
 
     FundDetailFragmentBinding mFundDetailFragmentBinding;
     Fund mFund;
+    DocumentAdapter mDocumentAdapter;
 
     public static FundDetailFragment newInstance(Fund fund) {
         Bundle args = new Bundle();
@@ -40,12 +47,25 @@ public class FundDetailFragment extends Fragment {
                 false
         );
 
+        initAdapter();
+        setListDocument();
         configureImageView();
         mFundDetailFragmentBinding.setFund(mFund);
         configureFragments();
         mFundDetailFragmentBinding.executePendingBindings();
         return mFundDetailFragmentBinding.getRoot();
     }
+
+    private void initAdapter() {
+        mDocumentAdapter = new DocumentAdapter();
+        mFundDetailFragmentBinding.fundDetailFragmentDocumentRecyclerView.setAdapter(mDocumentAdapter);
+        mFundDetailFragmentBinding.fundDetailFragmentDocumentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+    }
+
+    private void setListDocument() {
+        mDocumentAdapter.submitList(mFund.getDocumentRespons(), this);
+    }
+
 
     public void configureFragments() {
         getActivity().getSupportFragmentManager().beginTransaction()
@@ -63,5 +83,10 @@ public class FundDetailFragment extends Fragment {
         Glide.with(this).load(BuildConfig.BASE_URL + mFund.getFundManager().getLogo()).into(mFundDetailFragmentBinding.fundDetailFragmentFundManagerPhoto);
     }
 
+
+    @Override
+    public void onClickDocument(Document document) {
+        String a = "";
+    }
 
 }

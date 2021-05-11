@@ -17,4 +17,5 @@
     <string name="fund_type">Fund type</string>
     <string name="fund_class">Fund class</string>
     <string name="fund_class_anbima">Fund class anbima</string>
+    <string name="document_list">Document List</string>
 </resources>

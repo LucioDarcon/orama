@@ -15,13 +15,7 @@ public class FundViewHolder extends RecyclerView.ViewHolder {
     public FundViewHolder(@NonNull FundRecyclerItemBinding fundRecyclerItemBinding, FundAdapterContract.View view) {
         super(fundRecyclerItemBinding.getRoot());
         this.mFundRecyclerItemBinding = fundRecyclerItemBinding;
-
-        this.mFundRecyclerItemBinding.fundRecyclerItemCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                view.onClickFund(mFundRecyclerItemBinding.getFund());
-            }
-        });
+        this.mFundRecyclerItemBinding.fundRecyclerItemCardView.setOnClickListener(v -> view.onClickFund(mFundRecyclerItemBinding.getFund()));
     }
 
 
