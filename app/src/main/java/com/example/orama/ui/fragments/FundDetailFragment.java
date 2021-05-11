@@ -40,20 +40,26 @@ public class FundDetailFragment extends Fragment {
                 false
         );
 
-        configureExpandableLayouts();
+        configureImageView();
         mFundDetailFragmentBinding.setFund(mFund);
+        configureFragments();
         mFundDetailFragmentBinding.executePendingBindings();
+        return mFundDetailFragmentBinding.getRoot();
+    }
 
+    public void configureFragments() {
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_specification,
                         SpecificationFragment.newInstance(mFund)
                 ).commit();
 
-        return mFundDetailFragmentBinding.getRoot();
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container_fees,
+                        FeesFragment.newInstance(mFund)
+                ).commit();
     }
 
-    public void configureExpandableLayouts() {
-        mFundDetailFragmentBinding.fundDetailFragmentFeesTextView.setOnClickListener(v -> mFundDetailFragmentBinding.fundDetailFragmentFeesExpandableLayout.setExpanded(!mFundDetailFragmentBinding.fundDetailFragmentFeesExpandableLayout.isExpanded()));
+    public void configureImageView() {
         Glide.with(this).load(BuildConfig.BASE_URL + mFund.getFundManager().getLogo()).into(mFundDetailFragmentBinding.fundDetailFragmentFundManagerPhoto);
     }
 
