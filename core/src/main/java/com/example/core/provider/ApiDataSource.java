@@ -2,6 +2,7 @@ package com.example.core.provider;
 
 import com.example.infrastructure.apidatasource.FundApiDataSource;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -36,10 +37,14 @@ public class ApiDataSource {
     }
 
     private Retrofit buildRetrofit() {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
         return new Retrofit.Builder()
                 .baseUrl(mBaseUrl)
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(new Gson()))
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
     }
 

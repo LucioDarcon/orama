@@ -86,7 +86,10 @@ public class FundDetailFragment extends Fragment implements DocumentAdapterContr
 
     @Override
     public void onClickDocument(Document document) {
-        String a = "";
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container,
+                        PdfFragment.newInstance(document.getDocumentUrl())
+                ).commitNow();
     }
 
 }
