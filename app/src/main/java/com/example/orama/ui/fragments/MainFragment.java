@@ -150,7 +150,7 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
 
     @Override
     public void onClickFund(Fund fund) {
-        getActivity().getSupportFragmentManager().beginTransaction()
+        requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container,
                         FundDetailFragment.newInstance(fund)
                 ).commitNow();

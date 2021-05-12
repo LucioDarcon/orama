@@ -1,6 +1,6 @@
 package com.example.infrastructure.response;
 
-import com.example.infrastructure.MathUtils;
+import com.example.infrastructure.uitl.MathUtils;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

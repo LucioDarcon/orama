@@ -21,6 +21,8 @@ import com.example.orama.recyclerview.DocumentAdapter;
 import com.example.orama.recyclerview.DocumentAdapterContract;
 import com.example.orama.recyclerview.FundAdapter;
 
+import java.util.Objects;
+
 public class FundDetailFragment extends Fragment implements DocumentAdapterContract.View {
 
     FundDetailFragmentBinding mFundDetailFragmentBinding;
@@ -68,25 +70,27 @@ public class FundDetailFragment extends Fragment implements DocumentAdapterContr
 
 
     public void configureFragments() {
-        getActivity().getSupportFragmentManager().beginTransaction()
+        requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_specification,
                         SpecificationFragment.newInstance(mFund)
                 ).commit();
 
-        getActivity().getSupportFragmentManager().beginTransaction()
+        requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container_fees,
                         FeesFragment.newInstance(mFund)
                 ).commit();
     }
 
     public void configureImageView() {
-        Glide.with(this).load(BuildConfig.BASE_URL + mFund.getFundManager().getLogo()).into(mFundDetailFragmentBinding.fundDetailFragmentFundManagerPhoto);
+        Glide.with(this).load(BuildConfig.BASE_URL + mFund.getFundManager()
+                                        .getLogo())
+                                        .into(mFundDetailFragmentBinding.fundDetailFragmentFundManagerPhoto);
     }
 
 
     @Override
     public void onClickDocument(Document document) {
-        getActivity().getSupportFragmentManager().beginTransaction()
+        requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container,
                         PdfFragment.newInstance(document.getDocumentUrl())
                 ).commitNow();

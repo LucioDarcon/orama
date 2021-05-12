@@ -1,7 +1,6 @@
 package com.example.infrastructure.response;
 
-import com.example.infrastructure.MathUtils;
-import com.google.gson.annotations.Expose;
+import com.example.infrastructure.uitl.MathUtils;
 import com.google.gson.annotations.SerializedName;
 
 public class Profitabilities {

@@ -1,17 +1,13 @@
-package com.example.infrastructure;
+package com.example.infrastructure.uitl;
 
 import android.os.Environment;
 
-import com.example.infrastructure.GuidGenerator;
 import com.example.infrastructure.callback.GetPdfCallBack;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
 
 import okhttp3.ResponseBody;
 import retrofit2.Response;

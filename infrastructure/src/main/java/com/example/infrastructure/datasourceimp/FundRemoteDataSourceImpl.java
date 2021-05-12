@@ -1,8 +1,5 @@
 package com.example.infrastructure.datasourceimp;
 
-import android.os.Environment;
-
-import com.example.infrastructure.GuidGenerator;
 import com.example.infrastructure.apidatasource.FundApiDataSource;
 import com.example.infrastructure.callback.GetPdfCallBack;
 import com.example.infrastructure.remotedatasource.FundRemoteDataSource;
@@ -16,7 +13,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.infrastructure.FileDownloader.downloadFile;
+import static com.example.infrastructure.uitl.FileDownloader.downloadFile;
 
 
 public class FundRemoteDataSourceImpl implements FundRemoteDataSource {

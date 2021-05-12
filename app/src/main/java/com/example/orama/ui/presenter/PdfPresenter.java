@@ -27,8 +27,8 @@ public class PdfPresenter implements PdfFragmentContract.Presenter {
         mFundRemoteDataSource.getPDF(new GetPdfCallBack() {
             @Override
             public void getPdtSuccess(File file) {
-                mView.showFile(file);
-                mView.hideProgressBar();
+                mView.loadFile(file);
+                mView.setVisiblePdfFile();
             }
 
             @Override

@@ -11,10 +11,10 @@ public interface PdfFragmentContract {
 
     interface View {
         void setPresenter(PdfPresenter pdfPresenter);
-        void showFile(File file);
+        void loadFile(File file);
         void error();
         void loadProgressBar();
-        void hideProgressBar();
+        void setVisiblePdfFile();
     }
 
 

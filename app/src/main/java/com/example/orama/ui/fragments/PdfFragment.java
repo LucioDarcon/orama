@@ -60,7 +60,6 @@ public class PdfFragment extends Fragment implements PdfFragmentContract.View {
         return mPdfFragmentBinding.getRoot();
     }
 
-
     @Override
     public void setPresenter(PdfPresenter presenter) {
         mPdfPresenter = presenter;
@@ -72,13 +71,12 @@ public class PdfFragment extends Fragment implements PdfFragmentContract.View {
     }
 
     @Override
-    public void hideProgressBar() {
-        mPdfFragmentBinding.pfdFragmentProgressBar.setVisibility(View.GONE);
+    public void setVisiblePdfFile() {
         mPdfFragmentBinding.PDFView.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void showFile(File file) {
+    public void loadFile(File file) {
         mPdfFragmentBinding.PDFView.fromFile(file).load();
     }
 
