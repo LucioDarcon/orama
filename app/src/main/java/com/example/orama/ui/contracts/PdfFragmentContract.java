@@ -12,12 +12,14 @@ public interface PdfFragmentContract {
     interface View {
         void setPresenter(PdfPresenter pdfPresenter);
         void showFile(File file);
-        void errorToGetFundList();
+        void error();
+        void loadProgressBar();
+        void hideProgressBar();
     }
 
 
     interface Presenter {
-        void getFund(String url);
+        void getPdfDocument(String url);
     }
 
 }
