@@ -1,14 +1,13 @@
 package com.example.orama.ui.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.orama.R;
 import com.example.orama.ui.fragments.MainFragment;
-import com.example.orama.ui.fragments.PdfFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -31,6 +30,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0)
+            finish();
+    }
+
+    public void changeTitleActionBar(String newTitle) {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
+        toolbar.setTitle(newTitle);
     }
 
     @Override
@@ -47,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void goToMainFragment() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container,
-                        MainFragment.newInstance()).commitNow();
+                        MainFragment.newInstance()).addToBackStack("MainFragment").commit();
     }
 
 }

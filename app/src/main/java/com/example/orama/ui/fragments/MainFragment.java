@@ -19,8 +19,10 @@ import com.example.orama.R;
 import com.example.orama.databinding.MainFragmentBinding;
 import com.example.orama.recyclerview.FundAdapter;
 import com.example.orama.recyclerview.FundAdapterContract;
+import com.example.orama.ui.activities.MainActivity;
 import com.example.orama.ui.contracts.MainFragmentContract;
 import com.example.orama.ui.presenter.MainFragmentPresenter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,7 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
         initAdapter();
         initPresenter();
         filterList();
+        changeTitleActionBar();
         return mMainFragmentBinding.getRoot();
     }
 
@@ -77,9 +80,12 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
 
     @Override
     public void showFundList(List<Fund> fundList) {
-        hideLoadingComponents();
         mCurrentFundList = fundList;
         mFundAdapter.submitList(fundList, this);
+    }
+
+    private void changeTitleActionBar() {
+        ((MainActivity) requireActivity()).changeTitleActionBar("Fund list");
     }
 
     public void filterList() {
@@ -112,36 +118,29 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
 
     @Override
     public void errorToGetFundList() {
-        showLoadingComponentsToRetry();
+        Toast.makeText(getContext(), "Error", Toast.LENGTH_LONG ).show();
     }
 
-    public void showLoadingComponentsToRetry() {
-        mMainFragmentBinding.mainFragmentProgressBar.setVisibility(View.GONE);
-        mMainFragmentBinding.mainFragmentRetryButton.setVisibility(View.VISIBLE);
+    @Override
+    public void showProgressBar() {
+        mMainFragmentBinding.mainFragmentProgressBar.setVisibility(View.VISIBLE);
     }
 
-    public void hideLoadingComponents() {
+    @Override
+    public void hideProgressBar() {
         mMainFragmentBinding.mainFragmentProgressBar.setVisibility(View.GONE);
-        mMainFragmentBinding.mainFragmentRetryButton.setVisibility(View.GONE);
     }
 
     public void setListeners() {
         mMainFragmentBinding.mainFragmentSearchFloatActionButton.setOnClickListener(this);
-        mMainFragmentBinding.mainFragmentRetryButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.main_fragment_retry_button:
-                mMainFragmentPresenter.getFund();
-                break;
             case R.id.main_fragment_search_float_action_button:
-                if (mMainFragmentBinding.mainFragmentSearchFundEditText.getVisibility() == View.GONE) {
-                    mMainFragmentBinding.mainFragmentSearchFundEditText.setVisibility(View.VISIBLE);
-                } else {
-                    mMainFragmentBinding.mainFragmentSearchFundEditText.setVisibility(View.GONE);
-                }
+                mMainFragmentBinding.mainFragmentSearchFundEditText.setVisibility(
+                        (mMainFragmentBinding.mainFragmentSearchFundEditText.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE);
                 break;
             default:
                 break;
@@ -153,7 +152,7 @@ public class MainFragment extends Fragment implements MainFragmentContract.View,
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container,
                         FundDetailFragment.newInstance(fund)
-                ).commitNow();
+                ).addToBackStack("FundDetailFragment").commit();
     }
 
 }

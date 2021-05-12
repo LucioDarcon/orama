@@ -39,7 +39,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         mDocumentViewHolder = (DocumentViewHolder) holder;
-        Document document       = mDocumentList.get(position);
+        Document document   = mDocumentList.get(position);
         mDocumentViewHolder.mDocumentViewHolderBinding.setDocument(document);
         mDocumentViewHolder.mDocumentViewHolderBinding.executePendingBindings();
     }

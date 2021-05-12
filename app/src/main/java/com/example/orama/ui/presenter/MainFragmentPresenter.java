@@ -23,10 +23,12 @@ public class MainFragmentPresenter implements MainFragmentContract.Presenter {
 
     @Override
     public void getFund() {
+        mView.showProgressBar();
         mFundRemoteDataSource.getFundApiList(new GetFundListCallBack() {
             @Override
             public void getFundListSuccess(List<Fund> fundList) {
                 mView.showFundList(fundList);
+                mView.hideProgressBar();
             }
 
             @Override

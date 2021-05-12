@@ -11,6 +11,8 @@ public interface MainFragmentContract {
         void setPresenter(MainFragmentPresenter mainFragmentPresenter);
         void showFundList(List<Fund> fundList);
         void errorToGetFundList();
+        void showProgressBar();
+        void hideProgressBar();
     }
 
 

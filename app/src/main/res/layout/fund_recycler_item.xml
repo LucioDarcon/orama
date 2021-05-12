@@ -5,6 +5,7 @@
 
 
     <data>
+
         <variable
             name="fund"
             type="com.example.infrastructure.response.Fund" />
@@ -25,17 +26,17 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                visibleOrGone="@{fund.isSimple}"
+                visibleOrGone="@{fund.active}"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
-                android:background="@color/LightCyan"
+                android:layout_height="2dp"
+                android:background="@color/MediumSpringGreen"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView"
-                visibleOrGone="@{!fund.isSimple}"
+                visibleOrGone="@{!fund.active}"
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@color/DarkRed"
@@ -93,6 +94,7 @@
                 android:text="@string/minimum_initial_application_amount"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialTextView4" />
 

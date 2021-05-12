@@ -54,10 +54,11 @@ public class FeesFragment extends Fragment {
     }
 
     private void configureExpandableLayout() {
-        Drawable expandLessDrawable = ContextCompat.getDrawable(getActivity(), R.drawable.ic_baseline_expand_less_24);
-        Drawable expandMoreDrawable = ContextCompat.getDrawable(getActivity(), R.drawable.ic_baseline_expand_more_24);
+        Drawable expandLessDrawable = ContextCompat.getDrawable(requireActivity(), R.drawable.ic_baseline_expand_less_24);
+        Drawable expandMoreDrawable = ContextCompat.getDrawable(requireActivity(), R.drawable.ic_baseline_expand_more_24);
         mFeesFragmentBinding.fundDetailFragmentFeesExpandableButton.setOnClickListener(v -> {
             boolean specificationExpandableLayoutIsExpanded = mFeesFragmentBinding.fundDetailFragmentFeesExpandableLayout.isExpanded();
+
             mFeesFragmentBinding.fundDetailFragmentFeesExpandableLayout.setExpanded(!specificationExpandableLayoutIsExpanded);
 
             if (specificationExpandableLayoutIsExpanded) {

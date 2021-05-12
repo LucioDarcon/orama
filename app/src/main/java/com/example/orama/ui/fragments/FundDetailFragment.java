@@ -22,6 +22,7 @@ import com.example.orama.databinding.FundDetailFragmentBinding;
 import com.example.orama.recyclerview.DocumentAdapter;
 import com.example.orama.recyclerview.DocumentAdapterContract;
 import com.example.orama.recyclerview.FundAdapter;
+import com.example.orama.ui.activities.MainActivity;
 
 import java.util.Objects;
 
@@ -54,10 +55,16 @@ public class FundDetailFragment extends Fragment implements DocumentAdapterContr
         initAdapter();
         setListDocument();
         configureImageView();
-        mFundDetailFragmentBinding.setFund(mFund);
         configureFragments();
+        changeTitleActionBar();
+
+        mFundDetailFragmentBinding.setFund(mFund);
         mFundDetailFragmentBinding.executePendingBindings();
         return mFundDetailFragmentBinding.getRoot();
+    }
+
+    private void changeTitleActionBar() {
+        ((MainActivity) requireActivity()).changeTitleActionBar("Fund detail");
     }
 
     private void initAdapter() {
@@ -112,7 +119,7 @@ public class FundDetailFragment extends Fragment implements DocumentAdapterContr
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container,
                         PdfFragment.newInstance(document.getDocumentUrl())
-                ).commitNow();
+                ).addToBackStack("PdfFragment").commit();
     }
 
 }
