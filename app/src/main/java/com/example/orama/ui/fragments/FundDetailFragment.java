@@ -1,5 +1,7 @@
 package com.example.orama.ui.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,6 +92,23 @@ public class FundDetailFragment extends Fragment implements DocumentAdapterContr
 
     @Override
     public void onClickDocument(Document document) {
+        createAlertDialog(document);
+    }
+
+    private void createAlertDialog(Document document) {
+        AlertDialog.Builder downloadDocumentAlert = new AlertDialog.Builder(getContext());
+        downloadDocumentAlert.setMessage(requireContext().getString(R.string.alert_dialog_download_message));
+        downloadDocumentAlert.setPositiveButton(
+                requireContext().getString(R.string.alert_dialog_download_message_download),
+                (dialog, id) -> goToPdfFragment(document));
+
+        downloadDocumentAlert.setNegativeButton(
+                requireContext().getString(R.string.alert_dialog_download_message_no),
+                (dialog, id) -> dialog.cancel());
+        downloadDocumentAlert.create().show();
+    }
+
+    public void goToPdfFragment(Document document) {
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container,
                         PdfFragment.newInstance(document.getDocumentUrl())
