@@ -12,7 +12,7 @@ public class FakeFund {
     public static Fund getFund() {
         return new Fund(true, null, "SimpleName",
                 null, null, "volatily",
-                null, null, "Hard");
+                null, null, "Hard", true);
     }
 
 }

@@ -2,7 +2,9 @@ package com.example.orama.components
 
 import android.app.Activity
 import org.junit.After
+import org.junit.Assert
 import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
@@ -21,7 +23,6 @@ abstract class ComponentUnitTest {
             .resume()
             .visible()
         val activity: Activity = activityController.get()
-
         setupComponent(activity)
     }
 
@@ -34,6 +35,7 @@ abstract class ComponentUnitTest {
             .stop()
             .destroy()
     }
+
 
 
 }
