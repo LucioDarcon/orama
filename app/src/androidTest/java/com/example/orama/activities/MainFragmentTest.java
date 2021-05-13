@@ -30,7 +30,20 @@ public class MainFragmentTest extends ScreenRobot<MainActivityTest> {
     }
 
     @Test
-    public void test_if_text_toolbar() {
+    public void test_if_loading_icon_is_visible() {
+        clickOnView(R.id.activity_main_home_image_view);
+        checkIsDisplayed(R.id.main_fragment_progress_bar);
+    }
+
+    @Test
+    public void test_if_loading_icon_is_gone_after_submit_list_to_recycler_view() {
+        initFragment();
+        clickOnView(R.id.activity_main_home_image_view);
+        checkIsDisplayed(R.id.main_fragment_progress_bar);
+    }
+
+    @Test
+    public void test_if_text_toolbar_is_correct() {
         checkViewContainsText(mActivity.getActivity().getApplicationContext().getString(R.string.fund_list));
     }
 
@@ -44,6 +57,13 @@ public class MainFragmentTest extends ScreenRobot<MainActivityTest> {
     public void test_recycler_view_scroll_down() {
         initFragment();
         scrollViewDown(R.id.main_fragment_recycler_view_fund);
+    }
+
+    @Test
+    public void test_recycler_view_scroll_up() {
+        initFragment();
+        scrollViewDown(R.id.main_fragment_recycler_view_fund);
+        scrollViewUp(R.id.main_fragment_recycler_view_fund);
     }
 
 }
