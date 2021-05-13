@@ -16,7 +16,7 @@ import com.example.infrastructure.response.Fund;
 import com.example.orama.R;
 import com.example.orama.databinding.FeesFragmentBinding;
 
-import static com.example.orama.uitl.ExpandableUtil.configExpandableLayout;
+import static com.example.orama.util.ExpandableUtil.configExpandableLayout;
 
 public class FeesFragment extends Fragment {
 

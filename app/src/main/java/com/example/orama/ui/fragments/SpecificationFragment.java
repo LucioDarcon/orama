@@ -1,6 +1,5 @@
 package com.example.orama.ui.fragments;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -16,7 +14,7 @@ import com.example.infrastructure.response.Fund;
 import com.example.orama.R;
 import com.example.orama.databinding.SpecificationFragmentBinding;
 
-import static com.example.orama.uitl.ExpandableUtil.configExpandableLayout;
+import static com.example.orama.util.ExpandableUtil.configExpandableLayout;
 
 public class SpecificationFragment extends Fragment {
 

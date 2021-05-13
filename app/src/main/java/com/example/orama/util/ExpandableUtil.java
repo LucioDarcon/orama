@@ -1,4 +1,4 @@
-package com.example.orama.uitl;
+package com.example.orama.util;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
