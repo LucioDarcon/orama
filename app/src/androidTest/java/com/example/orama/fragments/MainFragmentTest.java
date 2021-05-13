@@ -1,8 +1,9 @@
-package com.example.orama.activities;
+package com.example.orama.fragments;
 
 import androidx.test.rule.ActivityTestRule;
 
 import com.example.orama.R;
+import com.example.orama.activities.MainActivityTest;
 import com.example.orama.robot.ScreenRobot;
 import com.example.orama.ui.activities.MainActivity;
 import com.example.orama.ui.fragments.MainFragment;

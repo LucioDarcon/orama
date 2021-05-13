@@ -37,7 +37,7 @@ public class FundAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         mFundViewHolder = (FundViewHolder) holder;
         Fund fund       = mFundList.get(position);
-        mFundViewHolder.mFundRecyclerItemBinding.setFund(fund);
+        mFundViewHolder.mFundRecyclerItemBinding.fundItemComponent.setFund(fund);
         mFundViewHolder.mFundRecyclerItemBinding.executePendingBindings();
     }
 

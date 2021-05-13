@@ -69,7 +69,8 @@ public class Fund {
             Description description,
             String volatility12m,
             Profitabilities profitabilities,
-            FundManager fundManager
+            FundManager fundManager,
+            String taxClassification
     ) {
         this.isSimple = isSimple;
         this.operability = operability;
@@ -79,6 +80,7 @@ public class Fund {
         this.volatility12m = volatility12m;
         this.profitabilities = profitabilities;
         this.fundManager = fundManager;
+        this.taxClassification = taxClassification;
     }
 
     public Integer getId() {
