@@ -8,6 +8,7 @@ import com.example.orama.robot.ScreenRobot;
 import com.example.orama.ui.activities.MainActivity;
 import com.example.orama.ui.fragments.MainFragment;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -18,6 +19,7 @@ public class MainFragmentTest extends ScreenRobot<MainActivityTest> {
     @Rule
     public ActivityTestRule<MainActivity> mActivity = new ActivityTestRule<>(MainActivity.class);
 
+    @Before
     public void initFragment() {
         try {
             mActivity.getActivity().getSupportFragmentManager()
@@ -38,7 +40,6 @@ public class MainFragmentTest extends ScreenRobot<MainActivityTest> {
 
     @Test
     public void test_if_loading_icon_is_gone_after_submit_list_to_recycler_view() {
-        initFragment();
         clickOnView(R.id.activity_main_home_image_view);
         checkIsDisplayed(R.id.main_fragment_progress_bar);
     }
@@ -50,19 +51,16 @@ public class MainFragmentTest extends ScreenRobot<MainActivityTest> {
 
     @Test
     public void test_if_fragment_contains_recycler_view() {
-        initFragment();
         checkIsDisplayed(R.id.main_fragment_recycler_view_fund);
     }
 
     @Test
     public void test_recycler_view_scroll_down() {
-        initFragment();
         scrollViewDown(R.id.main_fragment_recycler_view_fund);
     }
 
     @Test
     public void test_recycler_view_scroll_up() {
-        initFragment();
         scrollViewDown(R.id.main_fragment_recycler_view_fund);
         scrollViewUp(R.id.main_fragment_recycler_view_fund);
     }

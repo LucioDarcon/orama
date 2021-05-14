@@ -22,9 +22,10 @@ public class FundManager {
     @SerializedName("name")
     private String name;
 
-    public FundManager(String description, String name) {
+    public FundManager(String description, String name, String fullName) {
         this.description = description;
         this.name = name;
+        this.fullName = fullName;
     }
 
     public Integer getId() {

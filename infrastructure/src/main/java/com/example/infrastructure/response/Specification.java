@@ -36,14 +36,14 @@ public class Specification {
 
     public Specification(
             String fundMainStrategyName,
-            FundSuitabilityProfile fundSuitabilityProfile,
+            String fundType,
             String fundClass,
             String fundClassAnbima
     ) {
         this.fundMainStrategyName = fundMainStrategyName;
-        this.fundSuitabilityProfile = fundSuitabilityProfile;
-        this.fundClass = fundClass;
-        this.fundClassAnbima = fundClassAnbima;
+        this.fundType             = fundType;
+        this.fundClass            = fundClass;
+        this.fundClassAnbima      = fundClassAnbima;
     }
 
     public String getFundMainStrategyName() {

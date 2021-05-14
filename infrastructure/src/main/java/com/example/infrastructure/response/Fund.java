@@ -71,7 +71,8 @@ public class Fund {
             Profitabilities profitabilities,
             FundManager fundManager,
             String taxClassification,
-            boolean isActive
+            boolean isActive,
+            Fee fees
     ) {
         this.isSimple = isSimple;
         this.operability = operability;
@@ -83,6 +84,7 @@ public class Fund {
         this.fundManager = fundManager;
         this.taxClassification = taxClassification;
         this.isActive = isActive;
+        this.fees = fees;
     }
 
     public Integer getId() {

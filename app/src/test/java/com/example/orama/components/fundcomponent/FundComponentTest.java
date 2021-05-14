@@ -1,24 +1,17 @@
-package com.example.orama.components.newtest;
+package com.example.orama.components.fundcomponent;
 
 import android.app.Activity;
 
-import androidx.databinding.DataBindingUtil;
-
 import com.example.orama.R;
 import com.example.orama.components.ComponentUnitTest;
-import com.example.orama.components.FakeFund;
-import com.example.orama.databinding.FundItemComponentBinding;
 import com.example.orama.ui.component.FundComponent;
+import com.example.orama.util.FakeFund;
 
-import org.checkerframework.checker.units.qual.A;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.res.android.Asset;
-import org.robolectric.shadows.ShadowToast;
 
 @RunWith(RobolectricTestRunner.class)
 public class FundComponentTest extends ComponentUnitTest {
@@ -34,7 +27,22 @@ public class FundComponentTest extends ComponentUnitTest {
 
     @Test
     public void test_if_simple_name_is_correct() {
-        Assert.assertEquals("SimpleName", fundComponent.getFund().getSimpleName());
+        Assert.assertEquals("Oaktree Global Credit FIC FIM IE", fundComponent.getFund().getSimpleName());
+    }
+
+    @Test
+    public void test_if_tax_classification_is_correct() {
+        Assert.assertEquals("Longo prazo", fundComponent.getFund().getTaxClassification());
+    }
+
+    @Test
+    public void test_if_is_activite_is_correct() {
+        Assert.assertEquals(true, fundComponent.getFund().getActive());
+    }
+
+    @Test
+    public void test_if_is_volatility12m_is_correct() {
+        Assert.assertEquals("0.032739", fundComponent.getFund().getVolatility12m());
     }
 
 }

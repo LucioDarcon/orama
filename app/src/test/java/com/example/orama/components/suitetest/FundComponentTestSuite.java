@@ -1,4 +1,6 @@
-package com.example.orama.components.newtest;
+package com.example.orama.components.suitetest;
+
+import com.example.orama.components.fundcomponent.FundComponentTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
