@@ -82,6 +82,6 @@ public class PdfFragment extends Fragment implements PdfFragmentContract.View {
 
     @Override
     public void error() {
-        Toast.makeText(getContext(), "Fail :(", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "Update permissions", Toast.LENGTH_LONG).show();
     }
 }
