@@ -27,3 +27,4 @@
 <i>•	Build Variants</i>
 </br></br>
 <b> - Set build variante to prod<b> 
+<b> - Enable all permissions in app info<b> 
